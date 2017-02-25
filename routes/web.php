@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+//comando Routes
+Route::group(['middleware'=> 'web'],function(){
+  Route::resource('comando','\App\Http\Controllers\ComandoController');
+  Route::post('comando/{id}/update','\App\Http\Controllers\ComandoController@update');
+  Route::get('comando/{id}/delete','\App\Http\Controllers\ComandoController@destroy');
+  Route::get('comando/{id}/deleteMsg','\App\Http\Controllers\ComandoController@DeleteMsg');
+});
