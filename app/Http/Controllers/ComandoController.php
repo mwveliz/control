@@ -12,7 +12,7 @@ use URL;
 /**
  * Class ComandoController.
  *
- * @author  The scaffold-interface created at 2017-02-25 10:04:28pm
+ * @author  The scaffold-interface created at 2017-02-26 12:34:15am
  * @link  https://github.com/amranidev/scaffold-interface
  */
 class ComandoController extends Controller
@@ -37,7 +37,7 @@ class ComandoController extends Controller
     public function create()
     {
         $title = 'Create - comando';
-        
+
         return view('comando.create');
     }
 
@@ -51,17 +51,17 @@ class ComandoController extends Controller
     {
         $comando = new Comando();
 
-        
+
         $comando->orden = $request->orden;
 
-        
+
         $comando->fecha = $request->fecha;
 
-        
+
         $comando->mac = $request->mac;
 
-        
-        
+
+
         $comando->save();
 
         $pusher = App::make('pusher');
@@ -111,7 +111,7 @@ class ComandoController extends Controller
             return URL::to('comando/'. $id . '/edit');
         }
 
-        
+
         $comando = Comando::findOrfail($id);
         return view('comando.edit',compact('title','comando'  ));
     }
@@ -126,14 +126,14 @@ class ComandoController extends Controller
     public function update($id,Request $request)
     {
         $comando = Comando::findOrfail($id);
-    	
+
         $comando->orden = $request->orden;
-        
+
         $comando->fecha = $request->fecha;
-        
+
         $comando->mac = $request->mac;
-        
-        
+
+
         $comando->save();
 
         return redirect('comando');

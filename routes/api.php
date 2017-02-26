@@ -16,3 +16,16 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::resource('comandos', 'ComandosAPIController');
+
+/*Route::group(['middleware' => 'cors'], function(Router $router){
+    $router->get('api', 'ComandoAPIController@index');
+    $router->get('api', 'ComandosAPIController@store');
+
+});*/
+
+Route::resource('comandos', 'comandoAPIController');
+
+
+Route::resource('tablas', 'TablasAPIController');
